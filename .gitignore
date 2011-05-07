@@ -1,3 +1,4 @@
 *.bak
 *~
 
+racket/compiled
