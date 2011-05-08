@@ -10,14 +10,14 @@
    2
    (let loop ([candidate 3]
               [p primes])
-     (let ([limit (integer-sqrt candidate)]
-           [current-prime (stream-first p)])
-       (if (> current-prime limit)
-           (stream-cons candidate (loop (two+ candidate) primes))
-           (begin
-             (if (= (modulo candidate current-prime) 0)
-                 (loop (two+ candidate) primes)
-                 (loop candidate (stream-rest p)))))))))
+     (define limit (integer-sqrt candidate))
+     (define current-prime (stream-first p))
+     (if (> current-prime limit)
+         (stream-cons candidate (loop (two+ candidate) primes))
+         (begin
+           (if (= (modulo candidate current-prime) 0)
+               (loop (two+ candidate) primes)
+               (loop candidate (stream-rest p))))))))
 
 (define (prime-factors num)
   (let loop ([n num]
@@ -25,6 +25,7 @@
     (if (= n 1)
         factors
         (let next-prime ([p primes])
-          (if (= (modulo n (stream-first p)) 0)
-              (loop (/ n (stream-first p)) (cons (stream-first p) factors))
+          (define p1 (stream-first p))
+          (if (= (modulo n p1) 0)
+              (loop (/ n p1) (cons p1 factors))
               (next-prime (stream-rest p)))))))
