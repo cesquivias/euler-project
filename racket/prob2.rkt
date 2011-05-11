@@ -1,11 +1,6 @@
 #lang racket
 
-(require racket/stream)
-
-(define fib
-  (let loop ([a 1]
-             [b 2])
-    (stream-cons a (loop b (+ a b)))))
+(require "nums.rkt")
 
 (define (prob2 limit)
   (let loop ([f fib]
