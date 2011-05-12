@@ -1,10 +1,6 @@
 #lang racket
 
-(define (proper-divisors num)
-  (for/fold ([divisors '(1)])
-    ([i (in-range 2 (add1 (quotient num 2)))]
-     #:when (= (modulo num i) 0))
-    (values (cons i divisors))))
+(require "nums.rkt")
 
 (define (d num)
   (apply + (proper-divisors num)))
