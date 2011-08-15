@@ -2,3 +2,5 @@
 *~
 
 racket/compiled
+
+clojure/lib
