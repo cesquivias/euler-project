@@ -4,3 +4,6 @@
 racket/compiled
 
 clojure/lib
+
+d/*.exe
+d/*.obj
