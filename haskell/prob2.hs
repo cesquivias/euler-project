@@ -1,10 +1,4 @@
-prob2 limit = prob2_iter 1 1 0 limit
-
-prob2_iter a b total limit =
-    if a > limit then
-       total
-    else
-        prob2_iter b (a+b) (if even a then (total+a) else total) limit
+fib = 1 : 1 : [ a+b | (a,b) <- zip fib (tail fib) ]
 
 main = do
-     print (prob2 4000000)
+     print (sum (takeWhile (< 4000000) [ i | i <- fib, even i ]))
