@@ -8,11 +8,12 @@
   (+ i 2))
 
 (define (prime? num)
-  (let loop ([p primes]
-             [end (round (sqrt (abs num)))])
-    (cond [(> (stream-first p) end) #t]
-          [(= (modulo num (stream-first p)) 0) #f]
-          [else (loop (stream-rest p) end)])))
+  (and (> num 1)
+       (let loop ([p primes]
+                  [end (round (sqrt (abs num)))])
+         (cond [(> (stream-first p) end) #t]
+               [(= (modulo num (stream-first p)) 0) #f]
+               [else (loop (stream-rest p) end)]))))
 
 (define primes
   (stream-cons 
