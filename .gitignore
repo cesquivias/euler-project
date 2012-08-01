@@ -7,3 +7,4 @@ clojure/lib
 
 d/*.exe
 d/*.obj
+clojure/.lein*
