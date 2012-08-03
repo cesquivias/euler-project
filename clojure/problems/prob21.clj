@@ -5,7 +5,7 @@
   (memoize
    (fn [number]
      (reduce union #{1}
-             (for [i (range 2 (Math/round (Math/sqrt number)))]
+             (for [i (range 2 (Math/ceil (Math/sqrt number)))]
                (if (= (mod number i) 0)
                  (union (factors (quot number i)) #{i (quot number i)})
                  #{}))))))
