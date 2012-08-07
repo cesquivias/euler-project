@@ -4,6 +4,7 @@
 
 (def prime? (memoize (fn [n]
                        (cond (< n 2) false
+                             (= n 2) true
                              :else
                              (loop [limit (Math/ceil (Math/sqrt n))
                                     pseq primes]
