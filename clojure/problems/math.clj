@@ -2,12 +2,14 @@
 
 (def primes)
 
-(defn prime? [n]
-  (loop [limit (Math/ceil (Math/sqrt n))
-         pseq primes]
-    (cond (> (first pseq) limit) true
-          (= (mod n (first pseq)) 0) false
-          :else (recur limit (rest pseq)))))
+(def prime? (memoize (fn [n]
+                       (cond (< n 2) false
+                             :else
+                             (loop [limit (Math/ceil (Math/sqrt n))
+                                    pseq primes]
+                               (cond (> (first pseq) limit) true
+                                     (= (mod n (first pseq)) 0) false
+                                     :else (recur limit (rest pseq))))))))
           
 (def primes
   (letfn [(next-prime [n]
