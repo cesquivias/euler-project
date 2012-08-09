@@ -1,9 +1,9 @@
-(ns prob34)
+(ns prob36)
 
 (defn palindrome? [s]
   (= (vec s) (reverse s)))
 
-(defn prob34 [limit]
+(defn prob36 [limit]
   (reduce +
           (for [i (range limit)
                 :when (palindrome? (str i))
